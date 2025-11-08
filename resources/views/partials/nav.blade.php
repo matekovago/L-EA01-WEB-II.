@@ -7,6 +7,15 @@
       <li><a href="{{ url('/crud') }}">CRUD</a></li>
       <li><a href="{{ url('/diagram') }}">Diagram</a></li>
       <li><a href="{{ url('/admin') }}">Admin</a></li>
+
+      {{--autentikáció--}}
+    @auth
+      <li><a href="{{ url('/logout') }}">Kijelentkezés</a></li>
+    @else
+      <li><a href="{{ url('/login') }}">Bejelentkezés</a></li>
+      <li><a href="{{ url('/register') }}">Regisztráció</a></li>
+    @endauth
+
     </ul>
   </nav>
 </header>
