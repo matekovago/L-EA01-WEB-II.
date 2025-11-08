@@ -27,3 +27,11 @@ Route::get('/diagram', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
+
+use App\Http\Controllers\AuthController;
+
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
