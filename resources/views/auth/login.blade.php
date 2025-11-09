@@ -3,7 +3,7 @@
 @section('title', 'Bejelentkezés')
 
 @section('content')
-<section class="inner" style="max-width:500px; margin:50px auto;">
+<section class="inner" style="max-width:500px; margin:70px auto;">
     <h2>Bejelentkezés</h2>
 
     <form method="POST" action="{{ route('login') }}">
@@ -16,7 +16,7 @@
             <label>Jelszó</label>
             <input type="password" name="password" required>
         </div>
-        <button type="submit">Bejelentkezés</button>
+        <button type="submit" style="margin-top: 20px">Bejelentkezés</button>
     </form>
 
     <p>Nincs még fiókod? <a href="{{ route('register') }}">Regisztrálj itt</a></p>
