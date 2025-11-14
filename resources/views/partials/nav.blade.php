@@ -11,6 +11,8 @@
       {{--autentikáció--}}
     @auth
       <li><a href="{{ url('/logout') }}">Kijelentkezés</a></li>
+      <li><a href="{{ url('/uzenetek') }}">Üzenetek</a></li>
+
     @else
       <li><a href="{{ url('/login') }}">Bejelentkezés</a></li>
       <li><a href="{{ url('/register') }}">Regisztráció</a></li>

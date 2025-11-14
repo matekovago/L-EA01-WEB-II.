@@ -28,6 +28,10 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+Route::get('/uzenetek', function () {
+    return view('uzenetek');
+})->middleware('auth');
+
 use App\Http\Controllers\AuthController;
 
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
