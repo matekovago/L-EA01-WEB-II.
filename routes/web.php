@@ -1,11 +1,5 @@
 <?php
 
-//use Illuminate\Support\Facades\Route;
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -39,3 +33,9 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+use App\Http\Controllers\KapcsolatController;
+
+Route::get('/kapcsolat', [KapcsolatController::class, 'showForm'])->name('kapcsolat');
+Route::post('/kapcsolat', [KapcsolatController::class, 'sendMessage'])->name('kapcsolat.send');
+
