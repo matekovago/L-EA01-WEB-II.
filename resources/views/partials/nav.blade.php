@@ -1,5 +1,5 @@
 <header id="header">
-  <h1><a href="{{ url('/') }}">Solid State</a></h1>
+  <h1><a href="{{ url('/') }}">Operettek</a></h1>
   <nav id="nav">
     <ul>
       <li><a href="{{ url('/') }}">Főoldal</a></li>
@@ -17,6 +17,8 @@
       <li><a href="{{ url('/login') }}">Bejelentkezés</a></li>
       <li><a href="{{ url('/register') }}">Regisztráció</a></li>
     @endauth
+
+    <li><a href="{{ route('adatbazis') }}">Adatbázis</a></li>
 
     </ul>
   </nav>
