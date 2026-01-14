@@ -41,3 +41,7 @@ use App\Http\Controllers\KapcsolatController;
 use App\Http\Controllers\AdatbazisController;
     Route::get('/adatbazis', [AdatbazisController::class, 'index'])->name('adatbazis');
 
+use App\Http\Controllers\UzenetController;
+Route::get('/uzenetek', [UzenetController::class, 'index'])
+    ->middleware('auth')
+    ->name('uzenetek');
