@@ -14,7 +14,8 @@ class KapcsolatSeeder extends Seeder
      */
     public function run(): void
     {
-        $lines = explode("\n", trim(Storage::get('data/kapcsolat.txt')));
+        $content = file_get_contents(storage_path('app/data/kapcsolat.txt'));
+        $lines = preg_split("/\r\n|\n|\r/", trim($content));
 
         foreach ($lines as $index => $line) {
             if ($index === 0) continue; // fejléc kihagyása

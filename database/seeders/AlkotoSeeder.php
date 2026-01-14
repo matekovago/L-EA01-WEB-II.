@@ -15,23 +15,16 @@ class AlkotoSeeder extends Seeder
      */
     public function run(): void
     {
-        /* $lines = Storage::get('data/alkoto.txt');
-        foreach (explode("\n", trim($lines)) as $line) {
-            [$id, $nev] = explode('/t', $line);
-            Alkoto::create([
-                'id' => $id,
-                'nev' => $nev,
-            ]);
-        }
- */
-        dd(
+      /* dd(
             storage_path('app/data/alkoto.txt'),
             file_exists(storage_path('app/data/alkoto.txt'))
-        );
+        ); file-beolvasás ellenőrzése */
 
 
-        $lines = explode("\n", trim(Storage::get('data/alkoto.txt')));
-        
+       // $lines = explode("\n", trim(Storage::get('data/alkoto.txt')));
+       $content = file_get_contents(storage_path('app/data/alkoto.txt'));
+        $lines = preg_split("/\r\n|\n|\r/", trim($content)); 
+
         foreach ($lines as $index => $line) {
             if ($index === 0) continue; // fejléc kihagyása
 

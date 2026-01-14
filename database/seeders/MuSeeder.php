@@ -14,22 +14,35 @@ class MuSeeder extends Seeder
      */
     public function run(): void
     {
-        $lines = explode("\n", trim(Storage::get('data/mu.txt')));
+        $content = file_get_contents(storage_path('app/data/mu.txt'));
+        $lines = preg_split("/\r\n|\n|\r/", trim($content));
 
         foreach ($lines as $index => $line) {
             if ($index === 0) continue; // fejléc kihagyása
 
-            [$id, $cim, $eredeti, $szinhaz, $ev, $felvonas, $kep] = explode("\t", trim($line));
+            $cols = explode("\t", trim($line));
 
-            Mu::create([
-                'id' => $id,
+                // a hiányzó mezők null értékűek lesznek
+                $id       = $cols[0] ?? null;
+                $cim      = $cols[1] ?? null;
+                $eredeti  = $cols[2] ?? null;
+                $szinhaz  = $cols[3] ?? null;
+                $ev       = $cols[4] ?? null;
+                $felvonas = $cols[5] ?? null;
+                $kep      = $cols[6] ?? null;
+
+
+            Mu::create
+            ([
+                'id' => is_numeric($id) ? (int)$id : null,
                 'cim' => $cim,
-                'eredeti' => $eredeti,
-                'szinhaz' => $szinhaz,
-                'ev' => $ev,
-                'felvonas' => $felvonas,
-                'kep' => $kep,
+                'eredeti' => ($eredeti === '' ? null : $eredeti),
+                'szinhaz' => ($szinhaz === '' ? null : $szinhaz),
+                'ev' => is_numeric($ev) ? (int)$ev : null,
+                'felvonas' => is_numeric($felvonas) ? (int)$felvonas : null,
+                'kep' => ($kep === '' ? null : $kep),
             ]);
+
         }
     }
 }
